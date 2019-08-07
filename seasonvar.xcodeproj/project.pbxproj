@@ -11,6 +11,7 @@
 		EA1BC46322DFB0A2005D3FC6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA1BC46222DFB0A2005D3FC6 /* Assets.xcassets */; };
 		EA1BC46E22DFB0A2005D3FC6 /* seasonvarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1BC46D22DFB0A2005D3FC6 /* seasonvarTests.swift */; };
 		EA1BC47922DFB0A2005D3FC6 /* seasonvarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1BC47822DFB0A2005D3FC6 /* seasonvarUITests.swift */; };
+		EA3201E722E256F4006A33BD /* server in Resources */ = {isa = PBXBuildFile; fileRef = EA3201E622E256F4006A33BD /* server */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,7 +34,6 @@
 /* Begin PBXFileReference section */
 		EA1BC45C22DFB0A1005D3FC6 /* seasonvar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = seasonvar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA1BC45F22DFB0A1005D3FC6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EA1BC46122DFB0A1005D3FC6 /* application.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = application.js; sourceTree = "<group>"; };
 		EA1BC46222DFB0A2005D3FC6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EA1BC46422DFB0A2005D3FC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA1BC46922DFB0A2005D3FC6 /* seasonvarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = seasonvarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -42,6 +42,7 @@
 		EA1BC47422DFB0A2005D3FC6 /* seasonvarUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = seasonvarUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA1BC47822DFB0A2005D3FC6 /* seasonvarUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = seasonvarUITests.swift; sourceTree = "<group>"; };
 		EA1BC47A22DFB0A2005D3FC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EA3201E622E256F4006A33BD /* server */ = {isa = PBXFileReference; lastKnownFileType = folder; path = server; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,8 +93,8 @@
 		EA1BC45E22DFB0A1005D3FC6 /* seasonvar */ = {
 			isa = PBXGroup;
 			children = (
+				EA3201E622E256F4006A33BD /* server */,
 				EA1BC45F22DFB0A1005D3FC6 /* AppDelegate.swift */,
-				EA1BC46122DFB0A1005D3FC6 /* application.js */,
 				EA1BC46222DFB0A2005D3FC6 /* Assets.xcassets */,
 				EA1BC46422DFB0A2005D3FC6 /* Info.plist */,
 			);
@@ -221,6 +222,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA3201E722E256F4006A33BD /* server in Resources */,
 				EA1BC46322DFB0A2005D3FC6 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -316,6 +318,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 7S34V9Z849;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -376,6 +379,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 7S34V9Z849;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;

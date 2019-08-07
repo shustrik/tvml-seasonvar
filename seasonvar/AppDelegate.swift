@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, TVApplicationControllerDe
     
     // tvBaseURL points to a server on your local machine. To create a local server for testing purposes, use the following command inside your project folder from the Terminal app: ruby -run -ehttpd . -p9001. See NSAppTransportSecurity for information on using a non-secure server.
     static let tvBaseURL = "http://localhost:9001/"
-    static let tvBootURL = "\(AppDelegate.tvBaseURL)/application.js"
+    static let tvBootURL = "\(AppDelegate.tvBaseURL)application.js"
     
     // MARK: Javascript Execution Helper
     
@@ -40,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, TVApplicationControllerDe
         // Create the TVApplicationControllerContext for this application and set the properties that will be passed to the `App.onLaunch` function in JavaScript.
         let appControllerContext = TVApplicationControllerContext()
         
-        // The JavaScript URL is used to create the JavaScript context for your TVMLKit application. Although it is possible to separate your JavaScript into separate files, to help reduce the launch time of your application we recommend creating minified and compressed version of this resource. This will allow for the resource to be retrieved and UI presented to the user quickly.
+        // The JavaScript URL is used to create the JavaScript context for your TVMLKit application. Although it is possible to separate your JavaScript into separate files, to help reduce the launch time of your application we recommend creating minified and compressed version of this resources. This will allow for the resources to be retrieved and UI presented to the user quickly.
         if let javaScriptURL = URL(string: AppDelegate.tvBootURL) {
             appControllerContext.javaScriptApplicationURL = javaScriptURL
         }
@@ -54,10 +54,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate, TVApplicationControllerDe
         }
         
         appController = TVApplicationController(context: appControllerContext, window: window, delegate: self)
-        
+       
         return true
     }
-    
+    func createPushMyView(){
+        
+        //allows us to access the javascript context
+        appController?.evaluate(inJavaScriptContext: {(evaluation: JSContext) -> Void in
+            
+            //this is the block that will be called when javascript calls pushMyView()
+            let pushMyViewBlock : @convention(block) () -> Void = {
+                () -> Void in
+               }
+            
+            //this creates a function in the javascript context called "pushMyView".
+            //calling pushMyView() in javascript will call the block we created above.
+            evaluation.setObject(unsafeBitCast(pushMyViewBlock, to: AnyObject.self), forKeyedSubscript: "pushMyView" as NSCopying & NSObjectProtocol)
+        }, completion: {(Bool) -> Void in
+            //done running the script
+        })
+    }
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and stop playback
