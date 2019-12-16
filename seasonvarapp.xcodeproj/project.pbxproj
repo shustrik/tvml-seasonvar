@@ -10,15 +10,28 @@
 		EA4BFD0023A79849008AE10A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4BFCFF23A79849008AE10A /* AppDelegate.swift */; };
 		EA4BFD0323A7984A008AE10A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA4BFD0223A7984A008AE10A /* Assets.xcassets */; };
 		EA4BFD0623A7984A008AE10A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA4BFD0423A7984A008AE10A /* LaunchScreen.storyboard */; };
+		EA4BFD1523A798AD008AE10A /* serials.js in Resources */ = {isa = PBXBuildFile; fileRef = EA4BFD0E23A798AD008AE10A /* serials.js */; };
+		EA4BFD1623A798AD008AE10A /* templates.js in Resources */ = {isa = PBXBuildFile; fileRef = EA4BFD0F23A798AD008AE10A /* templates.js */; };
+		EA4BFD1723A798AD008AE10A /* application.js in Resources */ = {isa = PBXBuildFile; fileRef = EA4BFD1023A798AD008AE10A /* application.js */; };
+		EA4BFD1823A798AD008AE10A /* proxy.js in Resources */ = {isa = PBXBuildFile; fileRef = EA4BFD1123A798AD008AE10A /* proxy.js */; };
+		EA4BFD1923A798AD008AE10A /* login.js in Resources */ = {isa = PBXBuildFile; fileRef = EA4BFD1223A798AD008AE10A /* login.js */; };
+		EA4BFD1A23A798AD008AE10A /* api.js in Resources */ = {isa = PBXBuildFile; fileRef = EA4BFD1323A798AD008AE10A /* api.js */; };
+		EA4BFD1B23A798AD008AE10A /* builder.js in Resources */ = {isa = PBXBuildFile; fileRef = EA4BFD1423A798AD008AE10A /* builder.js */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		EA4BFCFC23A79849008AE10A /* seasonvarapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = seasonvarapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA4BFCFF23A79849008AE10A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EA4BFD0123A79849008AE10A /* application.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = application.js; sourceTree = "<group>"; };
 		EA4BFD0223A7984A008AE10A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EA4BFD0523A7984A008AE10A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EA4BFD0723A7984A008AE10A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EA4BFD0E23A798AD008AE10A /* serials.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = serials.js; sourceTree = "<group>"; };
+		EA4BFD0F23A798AD008AE10A /* templates.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = templates.js; sourceTree = "<group>"; };
+		EA4BFD1023A798AD008AE10A /* application.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = application.js; sourceTree = "<group>"; };
+		EA4BFD1123A798AD008AE10A /* proxy.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = proxy.js; sourceTree = "<group>"; };
+		EA4BFD1223A798AD008AE10A /* login.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = login.js; sourceTree = "<group>"; };
+		EA4BFD1323A798AD008AE10A /* api.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = api.js; sourceTree = "<group>"; };
+		EA4BFD1423A798AD008AE10A /* builder.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = builder.js; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,13 +64,27 @@
 		EA4BFCFE23A79849008AE10A /* seasonvarapp */ = {
 			isa = PBXGroup;
 			children = (
+				EA4BFD0D23A79886008AE10A /* server */,
 				EA4BFCFF23A79849008AE10A /* AppDelegate.swift */,
-				EA4BFD0123A79849008AE10A /* application.js */,
 				EA4BFD0223A7984A008AE10A /* Assets.xcassets */,
 				EA4BFD0423A7984A008AE10A /* LaunchScreen.storyboard */,
 				EA4BFD0723A7984A008AE10A /* Info.plist */,
 			);
 			path = seasonvarapp;
+			sourceTree = "<group>";
+		};
+		EA4BFD0D23A79886008AE10A /* server */ = {
+			isa = PBXGroup;
+			children = (
+				EA4BFD1323A798AD008AE10A /* api.js */,
+				EA4BFD1023A798AD008AE10A /* application.js */,
+				EA4BFD1423A798AD008AE10A /* builder.js */,
+				EA4BFD1223A798AD008AE10A /* login.js */,
+				EA4BFD1123A798AD008AE10A /* proxy.js */,
+				EA4BFD0E23A798AD008AE10A /* serials.js */,
+				EA4BFD0F23A798AD008AE10A /* templates.js */,
+			);
+			path = server;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -119,6 +146,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA4BFD0323A7984A008AE10A /* Assets.xcassets in Resources */,
+				EA4BFD1923A798AD008AE10A /* login.js in Resources */,
+				EA4BFD1823A798AD008AE10A /* proxy.js in Resources */,
+				EA4BFD1A23A798AD008AE10A /* api.js in Resources */,
+				EA4BFD1523A798AD008AE10A /* serials.js in Resources */,
+				EA4BFD1623A798AD008AE10A /* templates.js in Resources */,
+				EA4BFD1723A798AD008AE10A /* application.js in Resources */,
+				EA4BFD1B23A798AD008AE10A /* builder.js in Resources */,
 				EA4BFD0623A7984A008AE10A /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

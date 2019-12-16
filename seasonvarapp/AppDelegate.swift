@@ -16,9 +16,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, TVApplicationControllerDe
     var appController: TVApplicationController?
     
     // tvBaseURL points to a server on your local machine. To create a local server for testing purposes, use the following command inside your project folder from the Terminal app: ruby -run -ehttpd . -p9001. See NSAppTransportSecurity for information on using a non-secure server.
-    static let tvBaseURL = "http://localhost:9001/"
-    static let tvBootURL = "\(AppDelegate.tvBaseURL)/application.js"
-    
+
+    static let tvBaseURL = Bundle.main.object(forInfoDictionaryKey: "URL") as! NSString
+    static let tvApiURL = Bundle.main.object(forInfoDictionaryKey: "API") as! NSString
+    static let tvBootURL = "\(AppDelegate.tvBaseURL)application.js?time=" +  String(Int.random(in: 100 ... 10000))
     // MARK: Javascript Execution Helper
     
     func executeRemoteMethod(_ methodName: String, completion: @escaping (Bool) -> Void) {
@@ -45,8 +46,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, TVApplicationControllerDe
             appControllerContext.javaScriptApplicationURL = javaScriptURL
         }
         
-        appControllerContext.launchOptions["BASEURL"] = AppDelegate.tvBaseURL as NSString
-        
+        appControllerContext.launchOptions["BASEURL"] = AppDelegate.tvBaseURL
+        appControllerContext.launchOptions["APIURL"] = AppDelegate.tvApiURL
         if let launchOptions = launchOptions {
             for (kind, value) in launchOptions {
                 appControllerContext.launchOptions[kind.rawValue] = value
