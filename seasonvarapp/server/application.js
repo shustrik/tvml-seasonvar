@@ -54,7 +54,15 @@ App.onLaunch = function (options) {
     evaluateScripts(helperScriptURLs, function (scriptsAreLoaded) {
         if (scriptsAreLoaded) {
             if (localStorage.getItem("seasonvar.api.key")) {
-                initialize()
+                login(localStorage.getItem("seasonvar.api.key"), function () {
+                        localStorage.setItem(localStorageApiKey, localStorage.getItem("seasonvar.api.key"));
+                        initialize()
+                    },
+                    function () {
+                        replaceDocument(createLoginDocument())
+                        replaceDocument(createAlert("Ошибка", 'Не верный ключ'))
+                    }
+                )
             } else {
                 replaceDocument(createLoginDocument())
             }
@@ -139,6 +147,7 @@ function createLoginDocument() {
                 initialize()
             },
             function () {
+                replaceDocument(createLoginDocument())
                 replaceDocument(createAlert("Ошибка", 'Не верный ключ'))
             }
         )
@@ -196,7 +205,7 @@ function initialize() {
         menuBarElem.addEventListener("select", (event) => {
             this.selectMenuItem(event.target);
         });
-       const menuBarFeature = menuBarElem.getFeature("MenuBarDocument");
+        const menuBarFeature = menuBarElem.getFeature("MenuBarDocument");
         serialsDocument = new SerialsDocument(proxy, menuBarFeature)
         replaceDocument(menuDoc);
     }, function (error) {

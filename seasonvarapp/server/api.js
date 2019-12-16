@@ -47,6 +47,7 @@ class Api {
         xhr.onload = () => {
             if (xhr.response.error !== undefined) {
                 error(xhr.response.error)
+                return
             }
             success(xhr.response);
         };
