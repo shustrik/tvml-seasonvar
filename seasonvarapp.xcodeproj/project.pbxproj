@@ -17,6 +17,7 @@
 		EA4BFD1923A798AD008AE10A /* login.js in Resources */ = {isa = PBXBuildFile; fileRef = EA4BFD1223A798AD008AE10A /* login.js */; };
 		EA4BFD1A23A798AD008AE10A /* api.js in Resources */ = {isa = PBXBuildFile; fileRef = EA4BFD1323A798AD008AE10A /* api.js */; };
 		EA4BFD1B23A798AD008AE10A /* builder.js in Resources */ = {isa = PBXBuildFile; fileRef = EA4BFD1423A798AD008AE10A /* builder.js */; };
+		F5E13D61446BDB802388E1AB /* Dockerfile in Resources */ = {isa = PBXBuildFile; fileRef = F5E13B8F34BC3700D716B841 /* Dockerfile */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		EA4BFD1223A798AD008AE10A /* login.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = login.js; sourceTree = "<group>"; };
 		EA4BFD1323A798AD008AE10A /* api.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = api.js; sourceTree = "<group>"; };
 		EA4BFD1423A798AD008AE10A /* builder.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = builder.js; sourceTree = "<group>"; };
+		F5E13B8F34BC3700D716B841 /* Dockerfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Dockerfile; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				EA4BFD0223A7984A008AE10A /* Assets.xcassets */,
 				EA4BFD0423A7984A008AE10A /* LaunchScreen.storyboard */,
 				EA4BFD0723A7984A008AE10A /* Info.plist */,
+				F5E13B8F34BC3700D716B841 /* Dockerfile */,
 			);
 			path = seasonvarapp;
 			sourceTree = "<group>";
@@ -154,6 +157,7 @@
 				EA4BFD1723A798AD008AE10A /* application.js in Resources */,
 				EA4BFD1B23A798AD008AE10A /* builder.js in Resources */,
 				EA4BFD0623A7984A008AE10A /* LaunchScreen.storyboard in Resources */,
+				F5E13D61446BDB802388E1AB /* Dockerfile in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
