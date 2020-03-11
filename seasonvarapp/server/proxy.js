@@ -65,7 +65,7 @@ class ProxyApi {
     }
 
     search(text, success, error) {
-        this.request("/search?text=" + text, {}, "get", success, error);
+        this.request("/search", {'text': text}, "get", success, error);
     }
 
     request(url, params, method, success, error) {

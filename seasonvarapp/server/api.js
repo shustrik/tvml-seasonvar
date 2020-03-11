@@ -18,7 +18,7 @@ class Api {
             'command': 'getSeason',
             'season_id': id,
             'key': this._token
-        }, success, error);
+        }, success, error); 
     }
 
     search(success, error, text) {
