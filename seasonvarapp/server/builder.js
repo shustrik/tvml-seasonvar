@@ -230,6 +230,11 @@ function buildEpisodesList(serial, episodes, play, markWatched) {
         })
         listItemLockup.addEventListener("holdselect", function (event) {
             markWatched(item.id)
+            let textBadge = document.createElement('img')
+            textBadge.setAttribute('src', "resource://button-checkmark")
+            textBadge.setAttribute('contentsMode', "aspectFill")
+            textBadge.setAttribute('theme', "light")
+            this.appendChild(textBadge)
         })
         let title = document.createElement('title')
         title.textContent = item.name

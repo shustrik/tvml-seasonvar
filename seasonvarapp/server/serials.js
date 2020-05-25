@@ -72,7 +72,6 @@ class SerialsDocument {
                 that.menuBarFeature.setDocument(doc, menuItem);
             },
             function (error) {
-                console.log(error)
                 replaceDocument(createAlert("Ошибка", error))
             });
     }
@@ -108,11 +107,11 @@ class SerialsDocument {
     }
 
 
-    play(target, serial) {
-        if (serial.currentEpisode.time > 100) {
-            this.playFile(serial.currentEpisode.path, serial.currentEpisode, serial.translation, serial)
+    play(target, serialData) {
+        if (serialData.currentEpisode.time > 100) {
+            this.playFile(serialData)
         } else {
-            this.chooseEpisodeTranslation(serial.currentEpisode)
+            this.chooseEpisodeTranslation(serialData)
         }
     }
 
@@ -180,22 +179,28 @@ class SerialsDocument {
     }
 
 
-    playFile(file, episode, translation, serial) {
+    playFile(serialData) {
+        console.log(serialData);
         let document = new DOMParser().parseFromString(seekAlert, "application/xml");
         const mediaList = new Playlist();
-        const mediaItem = new MediaItem('video', file);
-        mediaItem.description = serial.description
-        mediaList.push(mediaItem)
+        serialData.playlist.forEach(function (item) {
+            const mediaItem = new MediaItem('video', item.path);
+            mediaItem.description = serialData.description;
+            mediaItem.externalID= item.id;
+            mediaList.push(mediaItem)
+        })
         const myPlayer = new Player();
         const that = this
         document.getElementById("button-yes").addEventListener("play", function () {
             myPlayer.interactiveOverlayDocument = null
-            myPlayer.seekToTime(episode.time)
+            console.log(serialData.currentEpisode)
+            myPlayer.seekToTime(serialData.currentEpisode.time)
             myPlayer.play()
         })
         document.getElementById("button-yes").addEventListener("select", function () {
             myPlayer.interactiveOverlayDocument = null
-            myPlayer.seekToTime(episode.time)
+            console.log(serialData.currentEpisode)
+            myPlayer.seekToTime(serialData.currentEpisode.time)
             myPlayer.play()
         })
         document.getElementById("button-no").addEventListener("play", function () {
@@ -208,7 +213,7 @@ class SerialsDocument {
         })
         myPlayer.addEventListener("stateWillChange", function (event) {
             if (event.oldState == 'end' && event.state == 'loading') {
-                if (episode.time > 120) {
+                if (serialData.currentEpisode.time > 120) {
                     myPlayer.interactiveOverlayDocument = document
                     myPlayer.interactiveOverlayDismissable = true
                 }
@@ -226,12 +231,12 @@ class SerialsDocument {
             if (myPlayer.currentMediaItemDuration - event.time < 600) {
                 watched = true
             }
-            that.api.timing(episode.id, {
+            that.api.timing(event.target.currentMediaItem.externalID, {
                 'time': parseInt(event.time),
                 'watched': watched,
-                'translation': translation
+                'translation': serialData.translation
             }, function () {
-                episode.time = parseInt(event.time)
+                serialData.currentEpisode.time = parseInt(event.time)
             }, function () {
 
             })
@@ -284,32 +289,31 @@ class SerialsDocument {
 
     }
 
-    chooseEpisodeTranslation(episode) {
+    chooseEpisodeTranslation(serialData) {
         const that = this
-        this.api.episodeTranslations(episode.id, function (obj) {
-            let document = new DOMParser().parseFromString(translations, "application/xml");
-            const alert = document.getElementsByTagName("alertTemplate").item(0)
-            let title = document.createElement('title')
-            title.textContent = 'Выберите перевод для "' + episode.name + '"'
-            obj.data.forEach(function (item) {
-                let button = document.createElement('button')
-                if (serial.translation == item.translation) {
-                    button.setAttribute("autoHighlight", true)
-                }
-                button.setAttribute("file", item.path)
-                let buttonTitle = document.createElement('title')
-                buttonTitle.textContent = item.translation
-                button.addEventListener("select", function () {
-                    navigationDocument.dismissModal();
-                    that.playFile(item.path, episode, item.translation, serial)
+        let document = new DOMParser().parseFromString(translations, "application/xml");
+        const alert = document.getElementsByTagName("alertTemplate").item(0)
+        let title = document.createElement('title')
+        title.textContent = 'Выберите перевод для "' + serialData.currentEpisode.name + '"'
+        serialData.translations.forEach(function (item) {
+            let button = document.createElement('button')
+            if (serialData.translation == item) {
+                button.setAttribute("autoHighlight", true)
+            }
+            button.setAttribute("translation", item)
+            let buttonTitle = document.createElement('title')
+            buttonTitle.textContent = item
+            button.addEventListener("select", function () {
+                that.api.serial(serialData.id + "?" + item, function (obj) {
+                    that.playFile(obj.data);
+                }, function (error) {
+                    replaceDocument(createAlert("Ошибка", error))
                 })
-                button.appendChild(buttonTitle)
-                alert.appendChild(button)
             })
-            alert.appendChild(title)
-            replaceDocument(document)
-        }, function (error) {
-            replaceDocument(createAlert("Ошибка", error))
+            button.appendChild(buttonTitle)
+            alert.appendChild(button)
         })
+        alert.appendChild(title)
+        replaceDocument(document)
     }
 }

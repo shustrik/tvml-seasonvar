@@ -65,7 +65,7 @@ class ProxyApi {
     }
 
     search(text, success, error) {
-        this.request("/search", {'text': text}, "get", success, error);
+        this.request("/search?"+encodeQueryData({'text': text}), {}, "get", success, error);
     }
 
     request(url, params, method, success, error) {
@@ -75,21 +75,25 @@ class ProxyApi {
         xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
         xhr.setRequestHeader("Api-Key", this._token);
         xhr.onload = () => {
-            console.log(xhr.response)
             if (xhr.response.error !== null) {
                 error(xhr.response.error)
             }
             success(xhr.response);
         };
         xhr.onerror = () => {
-            console.log(xhr.response)
             if (xhr.response == undefined) {
                 error(xhr.response)
             } else {
                 error(xhr.response.error);
             }
         };
-        console.log(JSON.stringify(params))
         xhr.send(JSON.stringify(params));
     }
+}
+
+function encodeQueryData(data) {
+   const ret = [];
+   for (let d in data)
+     ret.push(encodeURIComponent(d) + '=' + encodeURIComponent(data[d]));
+   return ret.join('&');
 }
